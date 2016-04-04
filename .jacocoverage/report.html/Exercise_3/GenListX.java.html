@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="da"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>GenListX.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;MidtermAssignment_test&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">Exercise_3</a> &gt; <span class="el_source">GenListX.java</span></div><h1>GenListX.java</h1><pre class="source lang-java linenums">package Exercise_3;
+
+// Klasse med fejl
+public class GenListX
+{
+  private Node list;
+  private int size;
+  
+  //create a new empty list
+  public GenListX()
+<span class="fc" id="L11">  {</span>
+<span class="fc" id="L12">    list = null;</span>
+<span class="fc" id="L13">    size = 0;</span>
+<span class="fc" id="L14">  }</span>
+  
+  // insert an object in the end of the list
+  public void add(Object o)
+  {    
+<span class="fc" id="L19">    Node node = new Node (o);</span>
+    Node current;
+
+<span class="fc bfc" id="L22" title="All 2 branches covered.">    if (list == null)</span>
+<span class="fc" id="L23">       list = node;</span>
+    else
+    {
+<span class="fc" id="L26">       current = list;</span>
+<span class="pc bpc" id="L27" title="1 of 2 branches missed.">       while (current.next != null)</span>
+<span class="nc" id="L28">          current = current.next;</span>
+<span class="fc" id="L29">       current.next = node;</span>
+    }
+<span class="fc" id="L31">    size++;</span>
+<span class="fc" id="L32">  }</span>
+  
+  // returns the number of objects in the list    
+  public int size()		
+  {
+<span class="fc" id="L37">    return size;</span>
+  }
+  
+  // returns a reference to object number &quot;index&quot; from the list
+  // throws IndexOutOfBoundException
+  public Object get(int index)throws IndexOutOfBoundsException
+  { 
+<span class="pc bpc" id="L44" title="2 of 4 branches missed.">    if (index &lt; 0 || index &gt;= size)</span>
+<span class="nc" id="L45">      throw new IndexOutOfBoundsException(&quot;Error (get): Invalid index: &quot; + index);</span>
+
+<span class="fc" id="L47">    Node current = list;</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">    for (int i= 0 ;i &lt; index ;i++ ) </span>
+    {
+<span class="fc" id="L50">        current = current.next;</span>
+    }
+<span class="fc" id="L52">    return current.data;</span>
+  }    
+  
+  public void add(int index, Object element)
+  { 
+<span class="pc bpc" id="L57" title="2 of 4 branches missed.">    if (index &lt; 0 || size &lt; index)</span>
+<span class="nc" id="L58">      throw new IndexOutOfBoundsException(&quot;Error (add): Invalid index: &quot; + index); </span>
+      
+<span class="fc" id="L60">    Node node = new Node(element);</span>
+    
+    // on first position
+<span class="pc bpc" id="L63" title="1 of 2 branches missed.">    if (index ==0)</span>
+    {
+<span class="fc" id="L65">      node.next = list;</span>
+<span class="fc" id="L66">      list = node;</span>
+    }
+    else
+    // on a position after the first
+    {
+<span class="nc" id="L71">      Node current = list;</span>
+<span class="nc bnc" id="L72" title="All 2 branches missed.">      for (int i= 0 ;i &lt; index-1 ;i++ ) </span>
+      {
+<span class="nc" id="L74">          current = current.next;</span>
+      }
+<span class="nc" id="L76">      node.next = current.next;</span>
+<span class="nc" id="L77">      current.next = node;</span>
+    }
+<span class="fc" id="L79">    size++;</span>
+<span class="fc" id="L80">  }</span>
+  
+  public Object remove(int index) throws IndexOutOfBoundsException
+  {
+<span class="nc bnc" id="L84" title="All 4 branches missed.">    if (index &lt;0 || size &lt;= index)</span>
+<span class="nc" id="L85">      throw new IndexOutOfBoundsException(&quot;Error (remove): Invalid index: &quot; + index); </span>
+    Node node;
+<span class="nc" id="L87">    Node current = list;</span>
+    // from first position
+<span class="nc bnc" id="L89" title="All 2 branches missed.">    if (index ==0)</span>
+    {
+<span class="nc" id="L91">      node = list;</span>
+<span class="nc" id="L92">      list = node.next;</span>
+    }
+    else
+    // from a position after the first
+    {
+<span class="nc" id="L97">      current = list;</span>
+<span class="nc bnc" id="L98" title="All 2 branches missed.">      for (int i= 0 ;i &lt; index-1 ;i++ ) </span>
+      {
+<span class="nc" id="L100">          current = current.next;</span>
+      }
+<span class="nc" id="L102">      node = current.next;</span>
+<span class="nc" id="L103">      current.next = current.next.next;</span>
+    } 
+<span class="nc" id="L105">    size--;</span>
+<span class="nc" id="L106">    return current.data;</span>
+  }
+    
+ //////////////////////////////////////// 
+  private class Node
+  {
+    Object data;
+    Node next;
+    public Node(Object o)
+<span class="fc" id="L115">    {</span>
+<span class="fc" id="L116">      data = o;</span>
+<span class="fc" id="L117">      next = null;</span>
+<span class="fc" id="L118">    }</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>
