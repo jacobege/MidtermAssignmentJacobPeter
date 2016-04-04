@@ -1,74 +1,76 @@
 package Exercise_3_test;
 
 import Exercise_3.GenListX;
-import org.junit.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
+/**
+ * Created by Sean Emerson on 04-04-2016.
+ */
 public class GenListXTest {
-    
-    private GenListX instance;
-    
-    public GenListXTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
+    GenListX list;
+
     @Before
     public void setUp() {
-        instance = new GenListX();
+        list = new GenListX();
     }
     
     @After
     public void tearDown() {
-        instance = null;
+        list = null;
     }
 
-    /**
-     * Test of add method, of class GenListX.
-     */
     @Test
-    public void testAdd_Size_Get() {
-        int obj = 123;
-        System.out.println("Add_Size_Get");
-        
-        assertTrue(instance.size() == 0);
-        
-        instance.add(obj);
-        
-        assertTrue(instance.size() == 1);
-        assertTrue((int)instance.get(0) == obj);
+    public void testAdd() throws Exception {
+        list.add("Test");
+        assertEquals(1, list.size());
+        list.add("Test2");
+        assertEquals(2, list.size());
     }
 
-    /**
-     * Test of size method, of class GenListX.
-     */
     @Test
-    public void testSize() {
-        System.out.println("size");
-        int a, b, c;
-        
-        a = 1;
-        b = 2;
-        c = 3;
-        
-        assertTrue(instance.size() == 0);
-        
-        instance.add(a);
-        instance.add(b);
-        instance.add(0, c);
-        
-        assertTrue(instance.size() == 3);
-        
-        assertEquals(instance.get(0), c);
-        assertEquals(instance.get(1), a);
-        assertEquals(instance.get(2), b);
+    public void testSize() throws Exception {
+        assertEquals(0,list.size());
+        list.add("Test");
+        assertEquals(1,list.size());
+        list.remove(0);
+        assertEquals(0,list.size());
+    }
+
+    @Test
+    public void testGet()  {
+        try {
+        list.get(0);
+        fail("No exception was thrown");}
+        catch (IndexOutOfBoundsException e) {}
+
+        list.add("Test");
+        assertEquals("Test", list.get(0));
+    }
+
+    @Test
+    public void testAdd1() throws Exception {
+        list.add(0,"Test");
+        assertEquals(1,list.size());
+        list.add(0,"Test2");
+        assertEquals(2,list.size());
+    }
+
+    @Test
+    public void testRemove(){
+        try{list.remove(0);
+        fail("No index out of bounds message");}
+        catch (IndexOutOfBoundsException e){}
+
+        list.add("Test");
+        list.add("Test2");
+        list.remove(0);
+        assertEquals(1, list.size());
+
+        list.remove(0);
+        assertEquals(0, list.size());
     }
 }
