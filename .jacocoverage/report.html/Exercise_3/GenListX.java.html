@@ -41,13 +41,13 @@ public class GenListX
   // throws IndexOutOfBoundException
   public Object get(int index)throws IndexOutOfBoundsException
   { 
-<span class="pc bpc" id="L44" title="2 of 4 branches missed.">    if (index &lt; 0 || index &gt;= size)</span>
-<span class="nc" id="L45">      throw new IndexOutOfBoundsException(&quot;Error (get): Invalid index: &quot; + index);</span>
+<span class="pc bpc" id="L44" title="1 of 4 branches missed.">    if (index &lt; 0 || index &gt;= size)</span>
+<span class="fc" id="L45">      throw new IndexOutOfBoundsException(&quot;Error (get): Invalid index: &quot; + index);</span>
 
 <span class="fc" id="L47">    Node current = list;</span>
-<span class="fc bfc" id="L48" title="All 2 branches covered.">    for (int i= 0 ;i &lt; index ;i++ ) </span>
+<span class="pc bpc" id="L48" title="1 of 2 branches missed.">    for (int i= 0 ;i &lt; index ;i++ ) </span>
     {
-<span class="fc" id="L50">        current = current.next;</span>
+<span class="nc" id="L50">        current = current.next;</span>
     }
 <span class="fc" id="L52">    return current.data;</span>
   }    
@@ -81,15 +81,15 @@ public class GenListX
   
   public Object remove(int index) throws IndexOutOfBoundsException
   {
-<span class="nc bnc" id="L84" title="All 4 branches missed.">    if (index &lt;0 || size &lt;= index)</span>
-<span class="nc" id="L85">      throw new IndexOutOfBoundsException(&quot;Error (remove): Invalid index: &quot; + index); </span>
+<span class="pc bpc" id="L84" title="1 of 4 branches missed.">    if (index &lt;0 || size &lt;= index)</span>
+<span class="fc" id="L85">      throw new IndexOutOfBoundsException(&quot;Error (remove): Invalid index: &quot; + index); </span>
     Node node;
-<span class="nc" id="L87">    Node current = list;</span>
+<span class="fc" id="L87">    Node current = list;</span>
     // from first position
-<span class="nc bnc" id="L89" title="All 2 branches missed.">    if (index ==0)</span>
+<span class="pc bpc" id="L89" title="1 of 2 branches missed.">    if (index ==0)</span>
     {
-<span class="nc" id="L91">      node = list;</span>
-<span class="nc" id="L92">      list = node.next;</span>
+<span class="fc" id="L91">      node = list;</span>
+<span class="fc" id="L92">      list = node.next;</span>
     }
     else
     // from a position after the first
@@ -102,8 +102,8 @@ public class GenListX
 <span class="nc" id="L102">      node = current.next;</span>
 <span class="nc" id="L103">      current.next = current.next.next;</span>
     } 
-<span class="nc" id="L105">    size--;</span>
-<span class="nc" id="L106">    return current.data;</span>
+<span class="fc" id="L105">    size--;</span>
+<span class="fc" id="L106">    return current.data;</span>
   }
     
  //////////////////////////////////////// 
