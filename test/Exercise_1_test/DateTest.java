@@ -23,6 +23,7 @@ public class DateTest {
         } catch (ArgumentException | InvalidDateException e) {
             System.out.println("Exception occured");
             System.out.println(e.getMessage());
+            fail();
         }
 
         Date expectedResult = new Date(1, 2, 1812);
@@ -37,6 +38,7 @@ public class DateTest {
         } catch (InvalidDateException | ArgumentException e) {
             System.out.println("Exception occured");
             System.out.println(e.getMessage());
+            fail();
         }
 
         Date expectedResult = new Date(1, 1, 2015);
@@ -81,6 +83,7 @@ public class DateTest {
         } catch (InvalidDateException | ArgumentException e) {
             System.out.println("Exception occured");
             System.out.println(e.getMessage());
+            fail();
         }
 
         Date expectedResult = new Date(2, 29, 2012);
@@ -96,6 +99,7 @@ public class DateTest {
         } catch (InvalidDateException | ArgumentException e) {
             System.out.println("Exception occured");
             System.out.println(e.getMessage());
+            fail();
         }
 
         Date expectedResult = new Date(3, 1, 2011);
