@@ -6,13 +6,14 @@ import static org.junit.Assert.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class SeleniumTest {
     @Test
     public void testPolyteknisk() {
         
-        //Setup
+        //Setup  
         WebDriver driver = new FirefoxDriver();
         driver.get("http://www.polyteknisk.dk/home");
         

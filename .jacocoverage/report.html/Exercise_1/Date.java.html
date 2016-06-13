@@ -142,47 +142,42 @@ public class Date {
 <span class="fc bfc" id="L142" title="All 2 branches covered.">            if (year % 4 == 0)</span>
 <span class="pc bpc" id="L143" title="1 of 2 branches missed.">                if (year % 100 != 0)</span>
 <span class="fc" id="L144">                    result = true;</span>
-<span class="nc bnc" id="L145" title="All 2 branches missed.">                else if (year % 400 == 0)</span>
-<span class="nc" id="L146">                    result = true;</span>
-                else
-<span class="nc" id="L148">                    result = false;</span>
+<span class="nc bnc" id="L145" title="All 2 branches missed.">                else result = year % 400 == 0;</span>
 
-<span class="fc" id="L150">            return result;</span>
+<span class="fc" id="L147">            return result;</span>
         }
 
     @Override
     public int hashCode() {
-<span class="nc" id="L155">        int hash = 5;</span>
-<span class="nc" id="L156">        hash = 67 * hash + this.month;</span>
-<span class="nc" id="L157">        hash = 67 * hash + this.day;</span>
-<span class="nc" id="L158">        hash = 67 * hash + this.year;</span>
-<span class="nc" id="L159">        return hash;</span>
+<span class="nc" id="L152">        int hash = 5;</span>
+<span class="nc" id="L153">        hash = 67 * hash + this.month;</span>
+<span class="nc" id="L154">        hash = 67 * hash + this.day;</span>
+<span class="nc" id="L155">        hash = 67 * hash + this.year;</span>
+<span class="nc" id="L156">        return hash;</span>
     }
 
     @Override
     public boolean equals(Object obj) {
-<span class="pc bpc" id="L164" title="1 of 2 branches missed.">        if (obj == null) {</span>
+<span class="pc bpc" id="L161" title="1 of 2 branches missed.">        if (obj == null) {</span>
+<span class="nc" id="L162">            return false;</span>
+        }
+<span class="pc bpc" id="L164" title="1 of 2 branches missed.">        if (getClass() != obj.getClass()) {</span>
 <span class="nc" id="L165">            return false;</span>
         }
-<span class="pc bpc" id="L167" title="1 of 2 branches missed.">        if (getClass() != obj.getClass()) {</span>
-<span class="nc" id="L168">            return false;</span>
+<span class="fc" id="L167">        final Date other = (Date) obj;</span>
+<span class="pc bpc" id="L168" title="1 of 2 branches missed.">        if (this.month != other.month) {</span>
+<span class="nc" id="L169">            return false;</span>
         }
-<span class="fc" id="L170">        final Date other = (Date) obj;</span>
-<span class="pc bpc" id="L171" title="1 of 2 branches missed.">        if (this.month != other.month) {</span>
+<span class="pc bpc" id="L171" title="1 of 2 branches missed.">        if (this.day != other.day) {</span>
 <span class="nc" id="L172">            return false;</span>
         }
-<span class="pc bpc" id="L174" title="1 of 2 branches missed.">        if (this.day != other.day) {</span>
-<span class="nc" id="L175">            return false;</span>
-        }
-<span class="pc bpc" id="L177" title="1 of 2 branches missed.">        if (this.year != other.year) {</span>
-<span class="nc" id="L178">            return false;</span>
-        }
-<span class="fc" id="L180">        return true;</span>
+        
+<span class="pc bpc" id="L175" title="1 of 2 branches missed.">        return this.year == other.year;</span>
     }
     
     @Override
     public String toString() {
-<span class="nc" id="L185">        return month + &quot;-&quot; + day + &quot;-&quot; + year;</span>
+<span class="nc" id="L180">        return month + &quot;-&quot; + day + &quot;-&quot; + year;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

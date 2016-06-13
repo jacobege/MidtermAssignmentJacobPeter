@@ -142,10 +142,7 @@ public class Date {
             if (year % 4 == 0)
                 if (year % 100 != 0)
                     result = true;
-                else if (year % 400 == 0)
-                    result = true;
-                else
-                    result = false;
+                else result = year % 400 == 0;
 
             return result;
         }
@@ -174,10 +171,8 @@ public class Date {
         if (this.day != other.day) {
             return false;
         }
-        if (this.year != other.year) {
-            return false;
-        }
-        return true;
+        
+        return this.year == other.year;
     }
     
     @Override
